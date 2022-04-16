@@ -46,10 +46,12 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
 @BindingAdapter("pictureOfDay")
 fun bindingPictureOfDay(imageView: ImageView, picture: PictureOfDay?) {
     imageView.setImageResource(R.drawable.placeholder_picture_of_day)
+    imageView.contentDescription = imageView.context.getString(R.string.picture_not_available)
     picture?.let {
         if (picture.mediaType == "image") {
             val uri = Uri.parse(picture.url)
             Picasso.with(imageView.context).load(uri).into(imageView)
+            imageView.contentDescription = picture.title
         }
     }
 }
