@@ -14,6 +14,12 @@ interface NetworkApiService {
 
     @GET("planetary/apod")
     suspend fun getMediaOfDay(@Query("api_key") api_key: String) : PictureOfDay
+
+    @GET("neo/rest/v1/feed")
+    suspend fun getAsteroids(
+        @Query("api_key") apiKey: String,
+        @Query("start_date") start: String,
+        @Query("end_date") end: String): String
 }
 
 object Api {
