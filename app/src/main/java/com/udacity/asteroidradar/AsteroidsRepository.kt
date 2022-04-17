@@ -11,8 +11,10 @@ import com.udacity.asteroidradar.room.AsteroidRoomDatabase
 import com.udacity.asteroidradar.room.asDomainData
 import kotlinx.coroutines.*
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AsteroidsRepository(private val asteroidRoomDatabase: AsteroidRoomDatabase) {
 
@@ -34,9 +36,11 @@ class AsteroidsRepository(private val asteroidRoomDatabase: AsteroidRoomDatabase
             }
         }
         try {
-            val dateFormatter = DateTimeFormatter.ofPattern(Constants.API_QUERY_DATE_FORMAT)
-            val today = LocalDate.now().format(dateFormatter)
-            val next7Days = LocalDate.now().plusDays(7L).format(dateFormatter)
+            val calendar : Calendar = Calendar.getInstance()
+            val dateFormatter = SimpleDateFormat(Constants.API_QUERY_DATE_FORMAT)
+            val today = dateFormatter.format(calendar.time)
+            calendar.add(Calendar.DATE, Constants.DEFAULT_END_DATE_DAYS)
+            val next7Days = dateFormatter.format(calendar.time)
 
             CoroutineScope(Dispatchers.IO).launch(handler) {
                 val response = Api.retrofitService.getAsteroids(Constants.API_KEY, today, next7Days)

@@ -66,7 +66,7 @@ fun List<AsteroidRoom>.asDomainData() : List<Asteroid> {
     return map {
         val calendar : Calendar = Calendar.getInstance()
         calendar.timeInMillis = it.closeApproachDate
-        val dateFormat = SimpleDateFormat(Constants.API_QUERY_DATE_FORMAT, Locale.getDefault())
+        val dateFormat = SimpleDateFormat(Constants.DATABASE_FORMAT_ENTRY)
         Asteroid(
             id = it.id,
             codename = it.codeName,
