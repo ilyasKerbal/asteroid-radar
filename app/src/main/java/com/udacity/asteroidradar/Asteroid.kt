@@ -20,7 +20,6 @@ fun List<Asteroid>.asDatabaseData(): List<AsteroidRoom> {
     return map {
         val calendar : Calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat(Constants.DATABASE_FORMAT_ENTRY)
-        Log.e("shit", dateFormat.parse(it.closeApproachDate).toString())
         calendar.time = dateFormat.parse(it.closeApproachDate)
         AsteroidRoom(
             id = it.id,
