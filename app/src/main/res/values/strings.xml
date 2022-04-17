@@ -20,4 +20,7 @@
     <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">This is NASA\'s picture of day, showing nothing yet</string>
     <string name="nasa_picture_of_day_content_description_format">NASA\'s picture of day: %s</string>
     <string name="picture_not_available">Picture of the day not available</string>
+    <string name="hazardous_content_desc">Funny image of a potentially hazardous asteroid</string>
+    <string name="not_hazardous_content_desc">Funny image of a not hazardous asteroid</string>
+    <string name="help_button">Help Button</string>
 </resources>

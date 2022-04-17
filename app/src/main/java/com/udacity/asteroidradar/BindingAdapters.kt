@@ -55,3 +55,13 @@ fun bindingPictureOfDay(imageView: ImageView, picture: PictureOfDay?) {
         }
     }
 }
+
+@BindingAdapter("contentDescriptionImage")
+fun bindingContentDescriptionImage(imageView: ImageView, asteroid: Asteroid?){
+    asteroid?.let {
+        imageView.contentDescription = when (asteroid.isPotentiallyHazardous) {
+            true -> imageView.context.getString(R.string.hazardous_content_desc)
+            false -> imageView.context.getString(R.string.not_hazardous_content_desc)
+        }
+    }
+}
